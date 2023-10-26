@@ -31,8 +31,13 @@ class FallingState: GKState {
         guard let fallingFruit, (fallingFruit === contact.bodyA.node || fallingFruit === contact.bodyB.node) else {
             return
         }
+        let topThreshold = scene.size.height - BoxNode.Constants.insets.top
         self.fallingFruit?.name = FruitNode.Constants.fallenFruitName
-        self.fallingFruit = nil
-        context.stateMachine?.enter(SwipingState.self)
+        if fallingFruit.calculateAccumulatedFrame().midY > topThreshold {
+            context.stateMachine?.enter(GameOverState.self)
+        } else {
+            self.fallingFruit = nil
+            context.stateMachine?.enter(SwipingState.self)
+        }
     }
 }

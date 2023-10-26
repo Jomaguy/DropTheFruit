@@ -11,8 +11,8 @@ struct LayoutInfo {
     let screenSize: CGSize
 
     func getSwipingRange(for fruitType: FruitType) -> ClosedRange<CGFloat> {
-        let leftBound = BoxNode.Constants.insets.left + BoxNode.Constants.side + fruitType.radius
-        let rightBound = screenSize.width - BoxNode.Constants.insets.right - BoxNode.Constants.side - fruitType.radius
+        let leftBound = BoxNode.Constants.insets.left + BoxNode.Constants.side + fruitType.radius + 1
+        let rightBound = screenSize.width - BoxNode.Constants.insets.right - BoxNode.Constants.side - fruitType.radius - 1
         return leftBound...rightBound
     }
 }

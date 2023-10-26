@@ -65,16 +65,6 @@ class GameScene: SKScene {
         state.handleTouchEnd()
     }
 
-    override func update(_ currentTime: TimeInterval) {
-        let fallenFruits = children
-            .compactMap { $0 as? FruitNode }
-            .filter { $0.name == FruitNode.Constants.fallenFruitName }
-        let topThreshold = size.height - BoxNode.Constants.insets.top
-        if fallenFruits.contains(where: { $0.calculateAccumulatedFrame().maxY > topThreshold }) {
-            context.stateMachine?.enter(GameOverState.self)
-        }
-    }
-
     func generateNewFruit() -> FruitNode {
         let types: [FruitType] = [.level1, .level1, .level1, .level2, .level2, .level2, .level2, .level2, .level3, .level3, .level3, .level4, .level4, .level5]
         let fruitNode = FruitNode(type: types.randomElement()!)
@@ -84,6 +74,8 @@ class GameScene: SKScene {
     }
 
     func reset() {
+        context.gameInfo.score = 0
+        scoreNode.updateScore(with: 0)
         children
             .compactMap { $0 as? FruitNode }
             .forEach { $0.removeFromParent() }
@@ -93,7 +85,6 @@ class GameScene: SKScene {
 
 extension GameScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
-        print("New contact")
         if let score = contactResovler.handle(contact: contact) {
             context.gameInfo.score += score
             scoreNode.updateScore(with: context.gameInfo.score)
