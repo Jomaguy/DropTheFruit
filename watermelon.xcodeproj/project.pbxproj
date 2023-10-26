@@ -11,10 +11,18 @@
 		851660DE2AEA3114006C0DC2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 851660DD2AEA3114006C0DC2 /* ContentView.swift */; };
 		851660E02AEA3115006C0DC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 851660DF2AEA3115006C0DC2 /* Assets.xcassets */; };
 		851660E32AEA3115006C0DC2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 851660E22AEA3115006C0DC2 /* Preview Assets.xcassets */; };
-		86E8C2AB2AEA6E5100F0E539 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8C2AA2AEA6E5100F0E539 /* GameViewController.swift */; };
 		86E8C2AD2AEA6E6200F0E539 /* GameContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8C2AC2AEA6E6200F0E539 /* GameContext.swift */; };
 		86E8C2AF2AEA6E7700F0E539 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8C2AE2AEA6E7700F0E539 /* GameScene.swift */; };
 		86E8C2B22AEA723900F0E539 /* BoxNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8C2B12AEA723900F0E539 /* BoxNode.swift */; };
+		86E8C2B42AEA75E100F0E539 /* FruitNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8C2B32AEA75E100F0E539 /* FruitNode.swift */; };
+		86E8C2B72AEA760400F0E539 /* FruitType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8C2B62AEA760400F0E539 /* FruitType.swift */; };
+		86E8C2BA2AEA775D00F0E539 /* SwipingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8C2B92AEA775D00F0E539 /* SwipingState.swift */; };
+		86E8C2BD2AEA7A0600F0E539 /* LayoutInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8C2BC2AEA7A0600F0E539 /* LayoutInfo.swift */; };
+		86E8C2BF2AEA7B8000F0E539 /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8C2BE2AEA7B8000F0E539 /* PhysicsCategory.swift */; };
+		86E8C2C12AEA811100F0E539 /* FallingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8C2C02AEA811100F0E539 /* FallingState.swift */; };
+		86E8C2C32AEA820F00F0E539 /* ContactResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8C2C22AEA820F00F0E539 /* ContactResolver.swift */; };
+		86E8C2C52AEA8F1400F0E539 /* ScoreNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8C2C42AEA8F1400F0E539 /* ScoreNode.swift */; };
+		86E8C2C72AEA918200F0E539 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8C2C62AEA918200F0E539 /* GameInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,10 +31,18 @@
 		851660DD2AEA3114006C0DC2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		851660DF2AEA3115006C0DC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		851660E22AEA3115006C0DC2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		86E8C2AA2AEA6E5100F0E539 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		86E8C2AC2AEA6E6200F0E539 /* GameContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameContext.swift; sourceTree = "<group>"; };
 		86E8C2AE2AEA6E7700F0E539 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		86E8C2B12AEA723900F0E539 /* BoxNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxNode.swift; sourceTree = "<group>"; };
+		86E8C2B32AEA75E100F0E539 /* FruitNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitNode.swift; sourceTree = "<group>"; };
+		86E8C2B62AEA760400F0E539 /* FruitType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitType.swift; sourceTree = "<group>"; };
+		86E8C2B92AEA775D00F0E539 /* SwipingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingState.swift; sourceTree = "<group>"; };
+		86E8C2BC2AEA7A0600F0E539 /* LayoutInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutInfo.swift; sourceTree = "<group>"; };
+		86E8C2BE2AEA7B8000F0E539 /* PhysicsCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
+		86E8C2C02AEA811100F0E539 /* FallingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FallingState.swift; sourceTree = "<group>"; };
+		86E8C2C22AEA820F00F0E539 /* ContactResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactResolver.swift; sourceTree = "<group>"; };
+		86E8C2C42AEA8F1400F0E539 /* ScoreNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreNode.swift; sourceTree = "<group>"; };
+		86E8C2C62AEA918200F0E539 /* GameInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +75,12 @@
 		851660DA2AEA3114006C0DC2 /* watermelon */ = {
 			isa = PBXGroup;
 			children = (
+				86E8C2BB2AEA79FD00F0E539 /* Helpers */,
+				86E8C2B52AEA75FB00F0E539 /* Models */,
 				86E8C2B02AEA722F00F0E539 /* Nodes */,
+				86E8C2B82AEA774B00F0E539 /* States */,
 				851660DB2AEA3114006C0DC2 /* watermelonApp.swift */,
 				851660DD2AEA3114006C0DC2 /* ContentView.swift */,
-				86E8C2AA2AEA6E5100F0E539 /* GameViewController.swift */,
 				86E8C2AC2AEA6E6200F0E539 /* GameContext.swift */,
 				86E8C2AE2AEA6E7700F0E539 /* GameScene.swift */,
 				851660DF2AEA3115006C0DC2 /* Assets.xcassets */,
@@ -83,8 +101,38 @@
 			isa = PBXGroup;
 			children = (
 				86E8C2B12AEA723900F0E539 /* BoxNode.swift */,
+				86E8C2B32AEA75E100F0E539 /* FruitNode.swift */,
+				86E8C2C42AEA8F1400F0E539 /* ScoreNode.swift */,
 			);
 			path = Nodes;
+			sourceTree = "<group>";
+		};
+		86E8C2B52AEA75FB00F0E539 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				86E8C2BE2AEA7B8000F0E539 /* PhysicsCategory.swift */,
+				86E8C2B62AEA760400F0E539 /* FruitType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		86E8C2B82AEA774B00F0E539 /* States */ = {
+			isa = PBXGroup;
+			children = (
+				86E8C2B92AEA775D00F0E539 /* SwipingState.swift */,
+				86E8C2C02AEA811100F0E539 /* FallingState.swift */,
+			);
+			path = States;
+			sourceTree = "<group>";
+		};
+		86E8C2BB2AEA79FD00F0E539 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				86E8C2BC2AEA7A0600F0E539 /* LayoutInfo.swift */,
+				86E8C2C62AEA918200F0E539 /* GameInfo.swift */,
+				86E8C2C22AEA820F00F0E539 /* ContactResolver.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,12 +205,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86E8C2C12AEA811100F0E539 /* FallingState.swift in Sources */,
 				86E8C2AF2AEA6E7700F0E539 /* GameScene.swift in Sources */,
 				86E8C2B22AEA723900F0E539 /* BoxNode.swift in Sources */,
+				86E8C2C52AEA8F1400F0E539 /* ScoreNode.swift in Sources */,
 				851660DE2AEA3114006C0DC2 /* ContentView.swift in Sources */,
-				86E8C2AB2AEA6E5100F0E539 /* GameViewController.swift in Sources */,
 				851660DC2AEA3114006C0DC2 /* watermelonApp.swift in Sources */,
+				86E8C2BF2AEA7B8000F0E539 /* PhysicsCategory.swift in Sources */,
+				86E8C2C72AEA918200F0E539 /* GameInfo.swift in Sources */,
+				86E8C2C32AEA820F00F0E539 /* ContactResolver.swift in Sources */,
+				86E8C2BA2AEA775D00F0E539 /* SwipingState.swift in Sources */,
 				86E8C2AD2AEA6E6200F0E539 /* GameContext.swift in Sources */,
+				86E8C2B72AEA760400F0E539 /* FruitType.swift in Sources */,
+				86E8C2B42AEA75E100F0E539 /* FruitNode.swift in Sources */,
+				86E8C2BD2AEA7A0600F0E539 /* LayoutInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

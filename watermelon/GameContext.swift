@@ -14,6 +14,9 @@ class GameContext {
     private(set) var scene: GameScene!
     private(set) var stateMachine: GKStateMachine?
 
+    var layoutInfo = LayoutInfo(screenSize: .zero)
+    var gameInfo = GameInfo()
+
     init() {
         self.scene = GameScene(context: self, size: UIScreen.main.bounds.size)
         configureStates()
@@ -22,7 +25,8 @@ class GameContext {
     func configureStates() {
         stateMachine = GKStateMachine(
             states: [
-//                UPStationaryState(scene: scene, context: self),
+                SwipingState(scene: scene, context: self),
+                FallingState(scene: scene, context: self)
 //                UPMovingUpState(scene: scene, context: self),
 //                UPMovingDownState(scene: scene, context: self),
 //                UPWaitingState(scene: scene, context: self),
