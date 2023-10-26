@@ -37,5 +37,14 @@ class FruitNode: SKNode {
         physicsBody?.categoryBitMask = PhysicsCategory.Fruit
         physicsBody?.collisionBitMask = PhysicsCategory.Fruit | PhysicsCategory.Box
         physicsBody?.contactTestBitMask = PhysicsCategory.Fruit | PhysicsCategory.Box
+
+        name = Constants.fruitName
+    }
+}
+
+extension FruitNode {
+    enum Constants {
+        static let fruitName = "fruit"
+        static let fallenFruitName = "fallen_fruit"
     }
 }

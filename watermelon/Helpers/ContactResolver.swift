@@ -30,6 +30,7 @@ class ContactResolver {
         let nextFruit = FruitNode(type: leftFruit.type.next)
         nextFruit.physicsBody?.isDynamic = true
         nextFruit.position = centeredPosition
+        nextFruit.name = FruitNode.Constants.fallenFruitName
 
         leftFruit.removeFromParent()
         rightFruit.removeFromParent()

@@ -66,7 +66,13 @@ class GameScene: SKScene {
     }
 
     override func update(_ currentTime: TimeInterval) {
-
+        let fallenFruits = children
+            .compactMap { $0 as? FruitNode }
+            .filter { $0.name == FruitNode.Constants.fallenFruitName }
+        let topThreshold = size.height - BoxNode.Constants.insets.top
+        if fallenFruits.contains(where: { $0.calculateAccumulatedFrame().maxY > topThreshold }) {
+            context.stateMachine?.enter(GameOverState.self)
+        }
     }
 
     func generateNewFruit() -> FruitNode {
@@ -75,6 +81,13 @@ class GameScene: SKScene {
         fruitNode.position = CGPoint(x: size.width / 2, y: size.height - 150)
         addChild(fruitNode)
         return fruitNode
+    }
+
+    func reset() {
+        children
+            .compactMap { $0 as? FruitNode }
+            .forEach { $0.removeFromParent() }
+        context.stateMachine?.enter(SwipingState.self)
     }
 }
 

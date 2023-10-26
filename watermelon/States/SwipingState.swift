@@ -10,20 +10,20 @@ import GameplayKit
 class SwipingState: GKState {
     unowned let scene: GameScene
     unowned let context: GameContext
-
+    
     private var isInteractingWithFruit = false
     private var isSwiping = false
     private var lastPosition: CGPoint = .zero
     private var fruitNode: FruitNode?
-
+    
     init(scene: GameScene, context: GameContext) {
         self.scene = scene
         self.context = context
         super.init()
     }
-
+    
     override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        stateClass is FallingState.Type
+        stateClass is FallingState.Type || stateClass is GameOverState.Type
     }
 
     override func didEnter(from previousState: GKState?) {

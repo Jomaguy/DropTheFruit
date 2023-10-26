@@ -23,6 +23,7 @@
 		86E8C2C32AEA820F00F0E539 /* ContactResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8C2C22AEA820F00F0E539 /* ContactResolver.swift */; };
 		86E8C2C52AEA8F1400F0E539 /* ScoreNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8C2C42AEA8F1400F0E539 /* ScoreNode.swift */; };
 		86E8C2C72AEA918200F0E539 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8C2C62AEA918200F0E539 /* GameInfo.swift */; };
+		86E8C2C92AEA968300F0E539 /* GameOverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E8C2C82AEA968300F0E539 /* GameOverState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		86E8C2C22AEA820F00F0E539 /* ContactResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactResolver.swift; sourceTree = "<group>"; };
 		86E8C2C42AEA8F1400F0E539 /* ScoreNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreNode.swift; sourceTree = "<group>"; };
 		86E8C2C62AEA918200F0E539 /* GameInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfo.swift; sourceTree = "<group>"; };
+		86E8C2C82AEA968300F0E539 /* GameOverState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			children = (
 				86E8C2B92AEA775D00F0E539 /* SwipingState.swift */,
 				86E8C2C02AEA811100F0E539 /* FallingState.swift */,
+				86E8C2C82AEA968300F0E539 /* GameOverState.swift */,
 			);
 			path = States;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				86E8C2C72AEA918200F0E539 /* GameInfo.swift in Sources */,
 				86E8C2C32AEA820F00F0E539 /* ContactResolver.swift in Sources */,
 				86E8C2BA2AEA775D00F0E539 /* SwipingState.swift in Sources */,
+				86E8C2C92AEA968300F0E539 /* GameOverState.swift in Sources */,
 				86E8C2AD2AEA6E6200F0E539 /* GameContext.swift in Sources */,
 				86E8C2B72AEA760400F0E539 /* FruitType.swift in Sources */,
 				86E8C2B42AEA75E100F0E539 /* FruitNode.swift in Sources */,
