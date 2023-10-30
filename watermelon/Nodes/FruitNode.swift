@@ -8,29 +8,47 @@
 import SpriteKit
 
 class FruitNode: SKNode {
-
     let type: FruitType
     var radius: CGFloat
     let texture: SKTexture
     var scale: CGFloat
+
     init(type: FruitType, texture: SKTexture, scale: CGFloat = 1.0) {
         self.type = type
         self.texture = texture
         self.scale = scale
         self.radius = 0.0
         super.init()
-        setup(type: type, texture: texture)
+        setup(type: type)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func prepareForEvolution() {
-        self.physicsBody = nil
+    func enablePhysics() {
+        physicsBody = physicsBody(forFruitType: type, texture: texture)
+        physicsBody?.friction = 0.2
+        physicsBody?.restitution = 0.1
+        physicsBody?.mass = type.mass
+        physicsBody?.isDynamic = true
+        physicsBody?.usesPreciseCollisionDetection = true
+        physicsBody?.affectedByGravity = true
+        physicsBody?.allowsRotation = true
+        physicsBody?.categoryBitMask = PhysicsCategory.Fruit
+        physicsBody?.collisionBitMask = PhysicsCategory.Fruit | PhysicsCategory.Box
+        physicsBody?.contactTestBitMask = PhysicsCategory.Fruit | PhysicsCategory.Box
     }
     
-    func physicsBody(forFruitType type: FruitType, texture: SKTexture) -> SKPhysicsBody {
+    private func setup(type: FruitType) {
+        let fruitShape = SKSpriteNode(texture: texture)
+        fruitShape.setScale(scale)
+        radius = fruitShape.size.width / 2.0
+        addChild(fruitShape)
+        name = Constants.fruitName
+    }
+
+    private func physicsBody(forFruitType type: FruitType, texture: SKTexture) -> SKPhysicsBody {
         let textureSize = texture.size()
 
         switch type {
@@ -54,29 +72,6 @@ class FruitNode: SKNode {
         default:
             return SKPhysicsBody(circleOfRadius: textureSize.width / 2.0)
         }
-    }
-    
-    private func setup(type: FruitType, texture: SKTexture) {
-        let fruitTexture = SKTexture(imageNamed: type.textureName)
-        let fruitShape = SKSpriteNode(texture: fruitTexture)
-        fruitShape.setScale(scale)
-        radius = fruitShape.size.width / 2.0
-        addChild(fruitShape)
-        
-        // Create a physics body for the player
-        physicsBody = physicsBody(forFruitType: type, texture: texture)
-        physicsBody?.friction = 0.2
-        physicsBody?.restitution = 0.1
-        physicsBody?.mass = type.mass
-        physicsBody?.isDynamic = false
-        physicsBody?.usesPreciseCollisionDetection = true
-        physicsBody?.affectedByGravity = true
-        physicsBody?.allowsRotation = true
-        physicsBody?.categoryBitMask = PhysicsCategory.Fruit
-        physicsBody?.collisionBitMask = PhysicsCategory.Fruit | PhysicsCategory.Box
-        physicsBody?.contactTestBitMask = PhysicsCategory.Fruit | PhysicsCategory.Box
-
-        name = Constants.fruitName
     }
 }
 

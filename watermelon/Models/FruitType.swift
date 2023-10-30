@@ -9,7 +9,7 @@ import UIKit
 import SwiftUI
 import SpriteKit
 
-enum FruitType {
+enum FruitType: CaseIterable {
     case level1 //cherry
     case level2 //blueberry
     case level3 //lime
@@ -21,8 +21,6 @@ enum FruitType {
     case level9 //melon
     case level10 //pineapple
     case level11 //watermelon
-    
-    static let allCases: [FruitType] = [ .level1, .level2, .level3, .level4, .level5, .level6, .level7, .level8, .level9, .level10, .level11]
     
     var textureName: String {
         switch self {

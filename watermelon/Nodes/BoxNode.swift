@@ -10,8 +10,12 @@ import SpriteKit
 class BoxNode: SKNode {
     var boxBorderW: CGFloat = 0.0
     var boxSize: CGSize = .zero
-    
+    var boxImageSize: CGSize = .zero
+    var boxImageBottom: CGFloat = 0
+
     func setup(screenSize: CGSize, bottom btm: CGFloat) -> CGSize {
+        position = CGPoint(x: screenSize.width / 2, y: screenSize.height / 2)
+
         let hPadding = screenSize.width * Constants.paddingRatio
         let width = screenSize.width - hPadding * 2.0
         let height = width / Constants.boxRatio
@@ -28,11 +32,12 @@ class BoxNode: SKNode {
         
         boxBorderW = borderWidth
         
-        let boxImageSize = CGSize(width: boxImageWidth, height: boxImageHeight)
+        boxImageSize = CGSize(width: boxImageWidth, height: boxImageHeight)
         node.size = boxImageSize
         let bottom = -1.0 * screenSize.height / 2.0 + boxImageHeight / 2.0 + btm + Constants.bottomPadding
         node.position = .init(x: 0, y: bottom)
-        
+        boxImageBottom = position.y + node.position.y - boxImageHeight / 2
+
         addChild(node)
         /// Left side
         createSideNode(
@@ -62,9 +67,7 @@ class BoxNode: SKNode {
         let boxWidth = screenSize.width - borderWidth * 2 - hPadding * 2
         let boxHeight = boxWidth / Constants.boxRatio
         boxSize = .init(width: boxWidth, height: boxHeight)
-        
-//        let topNode = SKShapeNode(rect: CGRect(origin: origin, size: size))
-//        sideNode.fillColor = .clear
+
         return boxImageSize
     }
     
@@ -99,13 +102,15 @@ class BoxNode: SKNode {
         return nil
     }
     func isOverTop(fruit: FruitNode) -> Bool {
-        return fruit.position.y - fruit.texture.size().height / 2.0 > position.y + boxSize.height / 2.0
+        let closeBoxHeight = boxSize.width / Constants.closerBoxRatio
+        return fruit.position.y - fruit.texture.size().height / 2.0 > position.y - boxSize.height / 2.0 + closeBoxHeight
     }
 }
 
 extension BoxNode {
     enum Constants {
-        static let boxRatio = 0.885
+        static let closerBoxRatio = 0.885
+        static let boxRatio = 0.8
         static let paddingRatio = 0.03287671233 //relative to screen width
         
         static let boxImageRatio = 0.8007614213

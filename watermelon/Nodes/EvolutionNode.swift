@@ -27,7 +27,6 @@ class EvolutionNode: SKNode {
         for type in FruitType.allCases {
             let texture = SKTexture(imageNamed: type.textureName)
             let evoFruitNode = FruitNode(type: type, texture: texture, scale: type.evolutionScale)
-            evoFruitNode.prepareForEvolution()
             evoFruitNode.position.y = arrow.position.y
             addChild(evoFruitNode)
             let fWidth = evoFruitNode.radius * 2.0

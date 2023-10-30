@@ -11,16 +11,19 @@ class ScoreNode: SKNode {
 
     private let textNode = SKLabelNode()
 
-    override init() {
-        super.init()
-        setup()
-    }
+    func setup(screenSize: CGSize) {
+        position = CGPoint(x: screenSize.width / 2, y: screenSize.height - 59 - Constants.size.height / 2)
 
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    private func setup() {
+        let backgroundNode = SKShapeNode(
+            rect: CGRect(
+                origin: CGPoint(x: -(Constants.size.width / 2), y: -(Constants.size.height / 2)),
+                size: Constants.size
+            ),
+            cornerRadius: Constants.size.height / 2
+        )
+        backgroundNode.fillColor = .white
+        backgroundNode.strokeColor = UIColor(named: "1672c4") ?? .clear
+        addChild(backgroundNode)
         updateScore(with: 0)
         textNode.verticalAlignmentMode = .center
         addChild(textNode)
@@ -35,9 +38,15 @@ class ScoreNode: SKNode {
         textNode.attributedText = NSAttributedString(
             string: "\(score)",
             attributes: [
-                .foregroundColor: UIColor.white,
-                .font: UIFont.systemFont(ofSize: 36, weight: .bold)
+                .foregroundColor: UIColor.black,
+                .font: UIFont.systemFont(ofSize: 26, weight: .bold)
             ]
         )
+    }
+}
+
+extension ScoreNode {
+    enum Constants {
+        static let size = CGSize(width: 140, height: 45)
     }
 }

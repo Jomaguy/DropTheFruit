@@ -31,7 +31,7 @@ class ContactResolver {
         )
         let type = leftFruit.type.next
         let nextFruit = FruitNode(type: type, texture: scene.fruitSprites.textureNamed(type.textureName))
-        nextFruit.physicsBody?.isDynamic = true
+        nextFruit.enablePhysics()
         nextFruit.position = centeredPosition
         nextFruit.name = FruitNode.Constants.fallenFruitName
 
@@ -75,11 +75,9 @@ class ContactResolver {
             .compactMap { $0 as? FruitNode }
             .filter { $0.position.distance(to: newFruit.position) < ($0.radius + newFruit.radius + 25) }
             .forEach { fruitNode in
-//                let multiplier = (fruitNode.type.mass / fruitNode.type.radius) / fruitNode.position.distance(to: newFruit.position)
-                let multiplier = 1.0
                 let vector = CGVector(
-                    dx: multiplier * 55 * (fruitNode.position.x - newFruit.position.x),
-                    dy: multiplier * 55 * (fruitNode.position.y - newFruit.position.y)
+                    dx: 55 * (fruitNode.position.x - newFruit.position.x),
+                    dy: 55 * (fruitNode.position.y - newFruit.position.y)
                 )
                 fruitNode.physicsBody?.applyImpulse(vector)
             }

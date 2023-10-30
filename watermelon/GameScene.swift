@@ -12,10 +12,13 @@ class GameScene: SKScene {
     unowned let context: GameContext
 
     private lazy var contactResovler = ContactResolver(scene: self)
+    let backgroundNode = BackgroundNode()
     let boxNode = BoxNode()
+    let nextFruitNode = NextFruitNode()
     let scoreNode = ScoreNode()
     let evolutionNode = EvolutionNode()
-    
+    let targetLineNode = TargetLineNode()
+
     let fruitSprites = SKTextureAtlas(named: "FruitAtlas")
     
     init(context: GameContext, size: CGSize) {
@@ -35,28 +38,35 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         isUserInteractionEnabled = true
         applyGravity()
-        let bgNode = SKSpriteNode(imageNamed: "dtf_bg")
-        bgNode.size = size
-        bgNode.position = .init(x: size.width / 2.0, y: size.height / 2.0)
-        addChild(bgNode)
-        
+
+        backgroundNode.setup(screenSize: size)
+        addChild(backgroundNode)
+
         let ht = evolutionNode.setup(screenSize: size)
         evolutionNode.position = CGPoint(x: size.width/2.0, y: size.height / 2.0)
         addChild(evolutionNode)
-        
-        
+
+        nextFruitNode.setup(screenSize: size)
+        addChild(nextFruitNode)
+
+        scoreNode.setup(screenSize: size)
+        addChild(scoreNode)
+
         let imgSize = boxNode.setup(screenSize: size, bottom: ht)
-        boxNode.position = CGPoint(x: size.width / 2, y: size.height / 2)
         addChild(boxNode)
-        
+
+        targetLineNode.setup(
+            screenSize: size,
+            boxBottom: boxNode.boxImageBottom,
+            height: boxNode.boxImageSize.height + 24
+        )
+        addChild(targetLineNode)
+
         let boxFront = SKSpriteNode(imageNamed: "dtf_box_front")
         boxFront.zPosition = 99
         boxFront.size = .init(width: imgSize.width, height: imgSize.height * 0.9078947368)
         boxFront.position = .init(x: size.width / 2.0, y: boxFront.size.height / 2.0 + ht + BoxNode.Constants.bottomPadding - 1.5)
         addChild(boxFront)
-        
-        scoreNode.position = CGPoint(x: 40, y: size.height - 100)
-        addChild(scoreNode)
 
         context.layoutInfo = LayoutInfo(screenSize: size)
         context.stateMachine?.enter(SwipingState.self)
@@ -73,8 +83,7 @@ class GameScene: SKScene {
             .compactMap { $0 as? FruitNode }
             .forEach { fruitNode in
                 if fruitNode.name == FruitNode.Constants.fallenFruitName, boxNode.isOverTop(fruit: fruitNode) {
-                    print("did hit top")
-//                    context.stateMachine?.enter(GameOverState.self)
+                    context.stateMachine?.enter(GameOverState.self)
                 } else {
                     if let pos = boxNode.isLeft(fruit: fruitNode) {
                         fruitNode.position = pos
@@ -109,12 +118,11 @@ class GameScene: SKScene {
         state.handleTouchEnd()
     }
 
-    func generateNewFruit() -> FruitNode {
-        let types: [FruitType] = [.level1, .level1, .level2, .level2, .level3, .level3, .level3, .level4, .level4, .level5, .level5, .level5, .level5]
-        let type: FruitType = types.randomElement() ?? .level1
+    func createFruitNode(type: FruitType) -> FruitNode {
         let fruitNode = FruitNode(type: type, texture: fruitSprites.textureNamed(type.textureName))
         fruitNode.position = CGPoint(x: size.width / 2, y: size.height - 150)
         addChild(fruitNode)
+        targetLineNode.position.x = size.width / 2
         return fruitNode
     }
 
@@ -125,6 +133,13 @@ class GameScene: SKScene {
             .compactMap { $0 as? FruitNode }
             .forEach { $0.removeFromParent() }
         context.stateMachine?.enter(SwipingState.self)
+    }
+
+    func updateNextFruitNode(type: FruitType) {
+        let texture = fruitSprites.textureNamed(type.textureName)
+        let scale = NextFruitNode.Constants.fruitSize.height / texture.size().height
+        let fruitNode = FruitNode(type: type, texture: texture, scale: scale)
+        nextFruitNode.update(fruitNode: fruitNode)
     }
 }
 
