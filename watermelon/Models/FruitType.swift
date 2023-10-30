@@ -10,281 +10,281 @@ import SwiftUI
 import SpriteKit
 
 enum FruitType: CaseIterable {
-    case level1 //cherry
-    case level2 //blueberry
-    case level3 //lime
-    case level4 //orange
-    case level5 //apple
-    case level6 //pear
-    case level7 //passion
-    case level8 //coconut
-    case level9 //melon
-    case level10 //pineapple
-    case level11 //watermelon
+    case cherry
+    case blueberry
+    case lime
+    case orange
+    case apple
+    case pear
+    case passion
+    case coconut
+    case melon
+    case pineapple
+    case watermelon
     
     var textureName: String {
         switch self {
-        case .level1:
+        case .cherry:
             return "dtf_cherry"
-        case .level2:
+        case .blueberry:
             return "dtf_blueberry"
-        case .level3:
+        case .lime:
             return "dtf_lime"
-        case .level4:
+        case .orange:
             return "dtf_orange"
-        case .level5:
+        case .apple:
             return "dtf_apple"
-        case .level6:
+        case .pear:
             return "dtf_pear"
-        case .level7:
+        case .passion:
             return "dtf_passion"
-        case .level8:
+        case .coconut:
             return "dtf_coco"
-        case .level9:
+        case .melon:
             return "dtf_melon"
-        case .level10:
+        case .pineapple:
             return "dtf_pineapple"
-        case .level11:
+        case .watermelon:
             return "dtf_wm"
         }
     }
     
     var color: UIColor {
         switch self {
-        case .level1:
+        case .cherry:
             return .init(hex: "B20603")
-        case .level2:
+        case .blueberry:
             return .init(hex: "1672C4")
-        case .level3:
+        case .lime:
             return .init(hex: "42B940")
-        case .level4:
+        case .orange:
             return .init(hex: "F9CEB2")
-        case .level5:
+        case .apple:
             return .init(hex: "E4241F")
-        case .level6:
+        case .pear:
             return .init(hex: "FFCE71")
-        case .level7:
+        case .passion:
             return .init(hex: "FFAAB6")
-        case .level8:
+        case .coconut:
             return .init(hex: "D3784A")
-        case .level9:
+        case .melon:
             return .init(hex: "CED84C")
-        case .level10:
+        case .pineapple:
             return .init(hex: "F0B813")
-        case .level11:
+        case .watermelon:
             return .init(hex: "00C527")
         }
     }
     var evolutionScale: CGFloat {
         switch self {
-        case .level1:
+        case .cherry:
             return 0.50
-        case .level2:
+        case .blueberry:
             return 0.50
-        case .level3:
+        case .lime:
             return 0.35
-        case .level4:
+        case .orange:
             return 0.35
-        case .level5:
+        case .apple:
             return 0.35
-        case .level6:
+        case .pear:
             return 0.31
-        case .level7:
+        case .passion:
             return 0.30
-        case .level8:
+        case .coconut:
             return 0.26
-        case .level9:
+        case .melon:
             return 0.27
-        case .level10:
+        case .pineapple:
             return 0.25
-        case .level11:
+        case .watermelon:
             return 0.25
         }
     }
     var mass: CGFloat {
         switch self {
-        case .level1:
+        case .cherry:
             return 12
-        case .level2:
+        case .blueberry:
             return 15
-        case .level3:
+        case .lime:
             return 18
-        case .level4:
+        case .orange:
             return 23
-        case .level5:
+        case .apple:
             return 30
-        case .level6:
+        case .pear:
             return 30
-        case .level7:
+        case .passion:
             return 35
-        case .level8:
+        case .coconut:
             return 40
-        case .level9:
+        case .melon:
             return 50
-        case .level10:
+        case .pineapple:
             return 55
-        case .level11:
+        case .watermelon:
             return 60
         }
     }
     
     var radius: CGFloat {
         switch self {
-        case .level1:
+        case .cherry:
             return 10
-        case .level2:
+        case .blueberry:
             return 20
-        case .level3:
+        case .lime:
             return 30
-        case .level4:
+        case .orange:
             return 40
-        case .level5:
+        case .apple:
             return 50
-        case .level6:
+        case .pear:
             return 60
-        case .level7:
+        case .passion:
             return 70
-        case .level8:
+        case .coconut:
             return 80
-        case .level9:
+        case .melon:
             return 90
-        case .level10:
+        case .pineapple:
             return 100
-        case .level11:
+        case .watermelon:
             return 110
         }
     }
 
     var particleSize: CGFloat {
         switch self {
-        case .level1:
+        case .cherry:
             return 7
-        case .level2:
+        case .blueberry:
             return 8
-        case .level3:
+        case .lime:
             return 9
-        case .level4:
+        case .orange:
             return 10
-        case .level5:
+        case .apple:
             return 11
-        case .level6:
+        case .pear:
             return 12
-        case .level7:
+        case .passion:
             return 14
-        case .level8:
+        case .coconut:
             return 15
-        case .level9:
+        case .melon:
             return 16
-        case .level10:
+        case .pineapple:
             return 17
-        case .level11:
+        case .watermelon:
             return 18
         }
     }
     
     var birthrate: CGFloat {
         switch self {
-        case .level1:
+        case .cherry:
             return 30
-        case .level2:
+        case .blueberry:
             return 120
-        case .level3:
+        case .lime:
             return 300
-        case .level4:
+        case .orange:
             return 330
-        case .level5:
+        case .apple:
             return 380
-        case .level6:
+        case .pear:
             return 410
-        case .level7:
+        case .passion:
             return 450
-        case .level8:
+        case .coconut:
             return 500
-        case .level9:
+        case .melon:
             return 800
-        case .level10:
+        case .pineapple:
             return 1000
-        case .level11:
+        case .watermelon:
             return 1200
         }
     }
     var numParticle: Int {
         switch self {
-        case .level1:
+        case .cherry:
             return 5
-        case .level2:
+        case .blueberry:
             return 30
-        case .level3:
+        case .lime:
             return 50
-        case .level4:
+        case .orange:
             return 60
-        case .level5:
+        case .apple:
             return 80
-        case .level6:
+        case .pear:
             return 100
-        case .level7:
+        case .passion:
             return 150
-        case .level8:
+        case .coconut:
             return 170
-        case .level9:
+        case .melon:
             return 220
-        case .level10:
+        case .pineapple:
             return 280
-        case .level11:
+        case .watermelon:
             return 300
         }
     }
     var score: Int {
         switch self {
-        case .level1:
+        case .cherry:
             return 1
-        case .level2:
+        case .blueberry:
             return 3
-        case .level3:
+        case .lime:
             return 6
-        case .level4:
+        case .orange:
             return 10
-        case .level5:
+        case .apple:
             return 15
-        case .level6:
+        case .pear:
             return 21
-        case .level7:
+        case .passion:
             return 28
-        case .level8:
+        case .coconut:
             return 36
-        case .level9:
+        case .melon:
             return 45
-        case .level10:
+        case .pineapple:
             return 55
-        case .level11:
+        case .watermelon:
             return 66
         }
     }
 
     var next: FruitType {
         switch self {
-        case .level1:
-            return .level2
-        case .level2:
-            return .level3
-        case .level3:
-            return .level4
-        case .level4:
-            return .level5
-        case .level5:
-            return .level6
-        case .level6:
-            return .level7
-        case .level7:
-            return .level8
-        case .level8:
-            return .level9
-        case .level9:
-            return .level10
-        case .level10:
-            return .level11
-        case .level11:
-            return .level1
+        case .cherry:
+            return .blueberry
+        case .blueberry:
+            return .lime
+        case .lime:
+            return .orange
+        case .orange:
+            return .apple
+        case .apple:
+            return .pear
+        case .pear:
+            return .passion
+        case .passion:
+            return .coconut
+        case .coconut:
+            return .melon
+        case .melon:
+            return .pineapple
+        case .pineapple:
+            return .watermelon
+        case .watermelon:
+            return .cherry
         }
     }
 }

@@ -52,21 +52,21 @@ class FruitNode: SKNode {
         let textureSize = texture.size()
 
         switch type {
-        case .level1:
+        case .cherry:
             return SKPhysicsBody(circleOfRadius: textureSize.width / 2.0, center: .init(x: 0, y: -2.0))
-        case .level4:
+        case .orange:
             return SKPhysicsBody(circleOfRadius: textureSize.width / 2.0, center: .init(x: 0, y: -2.0))
-        case .level5:
+        case .apple:
             return SKPhysicsBody(circleOfRadius: textureSize.width / 2.0, center: .init(x: 0, y: -2.0))
-        case .level6:
+        case .pear:
             return SKPhysicsBody(circleOfRadius: textureSize.width / 2.0, center: .init(x: 0, y: -4.0))
-        case .level7:
+        case .passion:
             return SKPhysicsBody(circleOfRadius: textureSize.width / 2.0, center: .init(x: 0, y: -3.0))
-        case .level9:
+        case .melon:
             return SKPhysicsBody(circleOfRadius: textureSize.width / 2.0, center: .init(x: 0, y: -2.0))
-        case .level10:
+        case .pineapple:
             return SKPhysicsBody(circleOfRadius: textureSize.width / 2.0, center: .init(x: 0, y: -8.5))
-        case .level11:
+        case .watermelon:
             return SKPhysicsBody(circleOfRadius: textureSize.width / 2.0, center: .init(x: 0, y: -4))
 
         default:

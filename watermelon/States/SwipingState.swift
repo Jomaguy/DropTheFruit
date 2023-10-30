@@ -81,7 +81,7 @@ class SwipingState: GKState {
     }
 
     private func generateRandomFruitType() -> FruitType {
-        let types: [FruitType] = [.level1, .level1, .level2, .level2, .level3, .level3, .level3, .level4, .level4, .level5, .level5, .level5, .level5]
-        return types.randomElement() ?? .level1
+        let types: [FruitType] = [.cherry, .cherry, .blueberry, .blueberry, .lime, .lime, .lime, .orange, .orange, .apple, .apple, .apple, .apple]
+        return types.randomElement() ?? .cherry
     }
 }
