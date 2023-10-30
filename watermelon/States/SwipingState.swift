@@ -28,11 +28,28 @@ class SwipingState: GKState {
 
     override func didEnter(from previousState: GKState?) {
         print("🔴 SwipingState. Did enter.")
+        //i probably should check for game over here
+        
         fruitNode = scene.generateNewFruit()
+        
+        
     }
 
     func handleTouch(_ touch: UITouch) {
         lastPosition = touch.location(in: scene)
+        if let fruitNode {
+            let allowedRange = context.layoutInfo.getSwipingRange(for: fruitNode, inBox: scene.boxNode)
+            if lastPosition.x < allowedRange.lowerBound {
+                fruitNode.position.x = allowedRange.lowerBound
+            } else if lastPosition.x > allowedRange.upperBound {
+                fruitNode.position.x = allowedRange.upperBound
+            } else {
+                fruitNode.position.x = lastPosition.x
+            }
+        } else {
+            fruitNode?.position.x = lastPosition.x
+        }
+
     }
 
     func handleTouchMoved(_ touch: UITouch) {
@@ -43,21 +60,17 @@ class SwipingState: GKState {
         let newPosition = touch.location(in: scene)
         let deltaX = newPosition.x - lastPosition.x
         let updatedPositionX = fruitNode.position.x + deltaX
-        let allowedRange = context.layoutInfo.getSwipingRange(for: fruitNode.type)
+        let allowedRange = context.layoutInfo.getSwipingRange(for: fruitNode, inBox: scene.boxNode)
         let clampedPositionX = max(allowedRange.lowerBound, min(updatedPositionX, allowedRange.upperBound))
         fruitNode.position.x = clampedPositionX
         lastPosition = newPosition
     }
 
     func handleTouchEnd() {
-        if isSwiping {
-            isSwiping = false
-        } else {
-            fruitNode?.physicsBody?.isDynamic = true
-            context.stateMachine?.enter(FallingState.self)
-            if let fallingState = context.stateMachine?.state(forClass: FallingState.self) {
-                fallingState.fallingFruit = fruitNode
-            }
+        fruitNode?.physicsBody?.isDynamic = true
+        context.stateMachine?.enter(FallingState.self)
+        if let fallingState = context.stateMachine?.state(forClass: FallingState.self) {
+            fallingState.fallingFruit = fruitNode
         }
     }
 }

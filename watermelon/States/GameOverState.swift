@@ -26,7 +26,6 @@ class GameOverState: GKState {
         print("🔴 GameOverState. Did enter.")
         UIImpactFeedbackGenerator(style: .heavy).impactOccurred(intensity: 0.85)
         Task { @MainActor in
-            try? await Task.sleep(nanoseconds: 1_000_000_000)
             scene.reset()
         }
     }

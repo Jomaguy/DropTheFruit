@@ -10,7 +10,7 @@ import SpriteKit
 
 class ContactResolver {
     private let scene: GameScene
-
+    
     init(scene: GameScene) {
         self.scene = scene
     }
@@ -29,7 +29,8 @@ class ContactResolver {
             x: (leftFruit.position.x + rightFruit.position.x) / 2,
             y: (leftFruit.position.y + rightFruit.position.y) / 2
         )
-        let nextFruit = FruitNode(type: leftFruit.type.next)
+        let type = leftFruit.type.next
+        let nextFruit = FruitNode(type: type, texture: scene.fruitSprites.textureNamed(type.textureName))
         nextFruit.physicsBody?.isDynamic = true
         nextFruit.position = centeredPosition
         nextFruit.name = FruitNode.Constants.fallenFruitName
@@ -46,9 +47,9 @@ class ContactResolver {
     private func makeExplosion(node: FruitNode) {
         let emitter = SKEmitterNode()
         emitter.zPosition = 13
-        emitter.particleBirthRate = 1100
-        emitter.numParticlesToEmit = 100
-        emitter.particleLifetime = 0.5
+        emitter.particleBirthRate = node.type.birthrate
+        emitter.numParticlesToEmit = node.type.numParticle
+        emitter.particleLifetime = 0.2
         emitter.emissionAngle = CGFloat(90.0).degreesToRadians()
         emitter.emissionAngleRange = CGFloat(360.0).degreesToRadians()
         emitter.particleRotationRange = CGFloat(360.0).degreesToRadians()
@@ -58,26 +59,27 @@ class ContactResolver {
         emitter.particleAlpha = 1.0
         emitter.particleAlphaRange = 0.25
         emitter.particlePositionRange = CGVector(dx: 1.2 * node.type.radius, dy: 1.2 * node.type.radius)
-        emitter.particleScale = 0.2
-        emitter.particleScaleRange = 4.0
-        emitter.particleScaleSpeed = -4.3
+        emitter.particleScale = 0.4
+        emitter.particleScaleRange = 0.2
+        emitter.particleScaleSpeed = -0.3
         emitter.particleBlendMode = SKBlendMode.alpha
         emitter.particleColorBlendFactor = 1.0
         emitter.particleColor = node.type.color
         emitter.position = node.position
-        emitter.particleSize = CGSize(width: node.type.radius / 5, height: node.type.radius / 5)
+        emitter.particleSize = CGSize(width: node.type.particleSize, height: node.type.particleSize)
         scene.addChild(emitter)
     }
 
     private func applyImpulseForNearbyFruits(newFruit: FruitNode) {
         scene.children
             .compactMap { $0 as? FruitNode }
-            .filter { $0.position.distance(to: newFruit.position) < ($0.type.radius + newFruit.type.radius + 25) }
+            .filter { $0.position.distance(to: newFruit.position) < ($0.radius + newFruit.radius + 25) }
             .forEach { fruitNode in
-                let multiplier = (fruitNode.type.radius + newFruit.type.radius) / fruitNode.position.distance(to: newFruit.position)
+//                let multiplier = (fruitNode.type.mass / fruitNode.type.radius) / fruitNode.position.distance(to: newFruit.position)
+                let multiplier = 1.0
                 let vector = CGVector(
-                    dx: multiplier * 50 * (fruitNode.position.x - newFruit.position.x),
-                    dy: multiplier * 50 * (fruitNode.position.y - newFruit.position.y)
+                    dx: multiplier * 55 * (fruitNode.position.x - newFruit.position.x),
+                    dy: multiplier * 55 * (fruitNode.position.y - newFruit.position.y)
                 )
                 fruitNode.physicsBody?.applyImpulse(vector)
             }
